@@ -19,6 +19,7 @@ import WorkVerticals from 'app/components/work-verticals';
 import ContactButton from 'app/components/contact-button';
 import WorkClientsBoard from 'app/components/work-clients-board';
 import WorkCaseStudies from 'app/components/work-case-studies';
+import FeaturedCaseStudy from 'app/components/featured-case-study';
 
 class PageWork extends Component {
   constructor(props) {
@@ -60,28 +61,6 @@ class PageWork extends Component {
         <TestimonialCarousel testimonials={testimonials} fixedHeight={fixedHeight} />
       );
     }
-  }
-
-  renderFeaturedCaseStudy() {
-    const styles = {
-      backgroundImage: `linear-gradient(305deg, ${featuredCaseStudy.colours[0]}, ${featuredCaseStudy.colours[1]})`
-    }
-
-    return (
-      <div className="work-featured-case-study" style={styles}>
-        <div className="work-featured-case-study-inner">
-          <div className="work-featured-case-study-image">
-            <img src={featuredCaseStudy.image} alt={featuredCaseStudy.imageAlt} />
-          </div>
-          <div className="work-featured-case-study-content">
-            <div className="section-title">Featured Work</div>
-            <h2 className="title">{featuredCaseStudy.title}</h2>
-            <p>{featuredCaseStudy.excerpt}</p>
-            <button onClick={Flux.override(featuredCaseStudy.linkURI)}>View Case Study</button>
-          </div>
-        </div>
-      </div>
-    )
   }
 
   addMoreCaseStudies() {
@@ -129,7 +108,7 @@ class PageWork extends Component {
 
           {this.renderTestimonialCarousel()}
 
-          {this.renderFeaturedCaseStudy()}
+          <FeaturedCaseStudy content={featuredCaseStudy} />
 
           <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
             <div className="page-work-filter">
