@@ -140,7 +140,7 @@ class Navigation extends Component {
         break;
     }
 
-    if (caseStudy && caseStudy.name === 'ustwo Auto') {
+    if (page === 'ustwo-auto') {
       color = ['#f8e467', '#ffbf00'];
     }
 
