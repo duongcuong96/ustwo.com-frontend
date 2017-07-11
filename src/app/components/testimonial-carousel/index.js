@@ -24,13 +24,28 @@ class TestimonialCarousel extends Component {
   }
 
   renderTestimonials() {
+    const { style } = this.props;
     return this.props.testimonials.map((testimonial, i) => {
       const classes = classnames('testimonial-item', {
         active: i === this.state.currentItem
-      })
+      });
+
+      let icon;
+      if (style === 'twitter-auto') {
+        icon = (
+          <div className="testimonial-icon">
+            <SVG
+              className="logo"
+              title="twitter logo"
+              spritemapID="twitter"
+            />
+          </div>
+        );
+      }
 
       return (
         <div key={`testimonial-${i}`} className={classes}>
+          {icon}
           <p>{testimonial.testimonial}</p>
           <div className="testimonial-name">{testimonial.source.name}</div>
           <div className="testimonial-smallprint">
@@ -43,7 +58,10 @@ class TestimonialCarousel extends Component {
   }
 
   render() {
-    const { fixedHeight } = this.props;
+    const { fixedHeight, style } = this.props;
+    const classes = classnames('testimonial-carousel', {
+      twitterAuto: style === 'twitter-auto'
+    });
 
     let styles;
     if (fixedHeight) {
@@ -51,7 +69,7 @@ class TestimonialCarousel extends Component {
     }
 
     return (
-      <section className="testimonial-carousel" style={styles}>
+      <section className={classes} style={styles}>
         <div className="testimonial-content">
           {this.renderTestimonials()}
         </div>
