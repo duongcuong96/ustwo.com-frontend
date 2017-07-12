@@ -85,10 +85,7 @@ class Hero extends Component {
               <h1 className="title">
                 <WordAnimation delay={0.5} duration={0.32}>{title}</WordAnimation>
               </h1>
-              {
-                this.props.subheading &&
-                <p className="subheading">{this.props.subheading}</p>
-              }
+              {this.props.subheading && <p className="subheading"><WordAnimation delay={0.5} duration={0.32}>{this.props.subheading}</WordAnimation></p>}
               {children}
             </div>
             <div className="hero-down-indicator" style={transitionStyles}>
